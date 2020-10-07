@@ -1,25 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Layout from "components/Layout";
+import Slider from "components/slider/Slider";
+import Section from "components/Section";
+import News from "components/news/News";
+import Banner from "components/banner/Banner";
+import Tabs from "components/tabs/Tabs";
+import ContactUs from "components/ContactUs";
+import { BannerTheme } from "utils/enums";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <head>
+        <title>Cool</title>
+      </head>
+      <Layout>
+        <Slider />
+        <Section>
+          <News />
+        </Section>
+        <Banner
+          title={`we are.`}
+          description={`Consectetur adipiscing elit.
+        Nulla condimentum tortor sem.`}
+          buttonText="THE PLAYERS >"
+        />
+        <Banner
+          title={`we do.`}
+          description={`Consectetur adipiscing elit.
+        Nulla condimentum tortor sem.`}
+          buttonText="THE PROJECTS >"
+          reverse
+          theme={BannerTheme.Light}
+        />
+        <Banner
+          title={`careers.`}
+          description={`Consectetur adipiscing elit.
+          Nulla condimentum tortor sem.`}
+          buttonText="THE POSITIONS >"
+        />
+        <Section>
+          <Tabs />
+        </Section>
+        <ContactUs />
+      </Layout>
+    </>
   );
 }
 
