@@ -21,6 +21,10 @@ const Col = styled.div`
 `;
 const LinkContainer = styled.div`
   flex: 1;
+  a {
+    color: white;
+    text-decoration: none;
+  }
 `;
 const ImageContainer = styled(Image)`
   width: 150px;
@@ -36,16 +40,16 @@ const Topbar = () => {
       </Col>
       <Col>
         <LinkContainer>
-          <a href="#">we are</a>
+          <a href="/">we are</a>
         </LinkContainer>
         <LinkContainer>
-          <a href="#">we do</a>
+          <a href="/">we do</a>
         </LinkContainer>
         <LinkContainer>
-          <a href="#">careers</a>
+          <a href="/">careers</a>
         </LinkContainer>
         <LinkContainer>
-          <a href="#">contact us</a>
+          <a href="/">contact us</a>
         </LinkContainer>
         <LinkContainer />
       </Col>

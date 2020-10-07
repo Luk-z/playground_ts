@@ -11,9 +11,6 @@ import { BannerTheme } from "utils/enums";
 function App() {
   return (
     <>
-      <head>
-        <title>Cool</title>
-      </head>
       <Layout>
         <Slider />
         <Section>
