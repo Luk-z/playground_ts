@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "components/Layout";
-import Slider from "components/slider/Slider";
+import SliderFade from "components/slider/SliderFade";
 import Section from "components/Section";
 import News from "components/news/News";
 import Banner from "components/banner/Banner";
@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Layout>
-        <Slider />
+        <SliderFade />
         <Section>
           <News />
         </Section>
