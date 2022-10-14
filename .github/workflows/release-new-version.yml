@@ -11,6 +11,8 @@ on:
         required: true
         type: string
         default: "test"
+env:
+  AUTHOR_BOT_NAME: Bot GitHub Actions
 
 jobs:
   build:
@@ -22,6 +24,8 @@ jobs:
         with:
           ref: ${{ inputs.source_branch }}
           # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
+      - name: Setup git user
+        run: git config --global user.email "<>" && git config --global user.name "$AUTHOR_BOT_NAME"
       - name: Setup pnPM 7
         uses: pnpm/action-setup@v2
         with:
