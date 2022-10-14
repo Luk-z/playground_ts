@@ -13,4 +13,4 @@ jobs:
           ref: main
           # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
       - name: Merge test into main
-        run: git merge test
+        run: git merge origin/test && git push origin main
