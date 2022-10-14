@@ -1,0 +1,52 @@
+name: Release New Version
+
+on:
+  workflow_call:
+    inputs:
+      source_branch:
+        required: true
+        type: string
+        default: "develop"
+      dest_branch:
+        required: true
+        type: string
+        default: "test"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.source_branch }}
+          # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
+      - name: Setup pnPM 7
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "pnpm"
+          registry-url: https://npm.pkg.github.com
+          scope: mds-bd
+      - name: Install Dependencies
+        run: pnpm install
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.MDSBD_MAVEN_PASSWORD }} # required for @mds-bd
+      - name: Bump version without commit
+        run: pnpm version minor --no-git-tag-version
+      - name: Build
+        run: pnpm build
+      - name: Commit Bump version and Build
+        run: git add . && git commit -m "🚀 bump version + 📦️ build files"
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.dest_branch }}
+          # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
+      - name: Merge ${{ inputs.source_branch }} into ${{ inputs.dest_branch }}
+        run: git merge ${{ inputs.source_branch }}
