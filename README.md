@@ -5,6 +5,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ```
 git clone https://github.com/Luk-z/playground_ts.git
 cd playground_ts/
-npm install
-npm run start
+pnpm install
+pnpm start
 ```

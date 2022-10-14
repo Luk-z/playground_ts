@@ -1,6 +1,6 @@
 {
   "name": "playground_ts",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.31",
@@ -22,7 +22,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "echo 'done'",
+    "build:original": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
