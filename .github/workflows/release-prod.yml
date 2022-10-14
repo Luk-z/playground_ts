@@ -8,6 +8,12 @@ jobs:
     name: Merge test into main
     runs-on: ubuntu-latest
     steps:
+      # checkout test is needed to merge
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          ref: test
+          # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
