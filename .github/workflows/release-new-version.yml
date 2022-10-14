@@ -55,4 +55,4 @@ jobs:
           ref: ${{ inputs.dest_branch }}
           # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
       - name: Merge ${{ inputs.source_branch }} into ${{ inputs.dest_branch }}
-        run: git merge ${{ inputs.source_branch }}
+        run: git merge origin/${{ inputs.source_branch }}
