@@ -47,6 +47,8 @@ jobs:
         run: pnpm build
       - name: Commit Bump version and Build
         run: git add . && git commit -m "🚀 bump version + 📦️ build files"
+      - name: push ${{ inputs.source_branch }}
+        run: git push origin ${{ inputs.source_branch }}
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
