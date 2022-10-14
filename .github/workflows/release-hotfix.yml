@@ -1,4 +1,4 @@
-name: Release an hotfix
+name: 3. Release an hotfix
 
 on:
   workflow_dispatch:

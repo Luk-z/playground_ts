@@ -1,4 +1,4 @@
-name: Release New Version
+name: 4. Release New Version (DO NOT USE DIRECTLY)
 
 on:
   workflow_call:

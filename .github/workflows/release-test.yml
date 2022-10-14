@@ -1,4 +1,4 @@
-name: Release test
+name: 1. Release Test
 
 on:
   workflow_dispatch:
