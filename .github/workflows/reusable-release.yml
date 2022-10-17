@@ -16,10 +16,10 @@ env:
 
 jobs:
   build:
-    name: Bump version, build and merge ${{ inputs.source_branch }} into ${{ inputs.dest_branch }}
+    name: Bump version, build on ${{ inputs.source_branch }} branch
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo with fetching all branches history
+      - name: Checkout Repo on ${{ inputs.source_branch }} branch (with fetching all branches history)
         uses: actions/checkout@v3
         with:
           ref: ${{ inputs.source_branch }}
@@ -50,14 +50,20 @@ jobs:
         run: git add . && git commit -m "🚀 bump version + 📦️ build files"
       - name: push ${{ inputs.source_branch }}
         run: git push origin ${{ inputs.source_branch }}
-      # - name: Checkout Repo
-      # uses: actions/checkout@v3
-      # with:
-      # ref: ${{ inputs.dest_branch }}
-      # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
-      - name: Checkout ${{ inputs.dest_branch }}
-        run: git checkout ${{ inputs.dest_branch }}
+
+  build:
+    name: Merge ${{ inputs.source_branch }} into ${{ inputs.dest_branch }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo on ${{ inputs.dest_branch }} branch (with fetching all branches history)
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.dest_branch }}
+          fetch-depth: 0 # fetch all history for all branches and tags
+          # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
+      - name: Setup git user
+        run: git config --global user.email "<>" && git config --global user.name "$AUTHOR_BOT_NAME"
       - name: Merge ${{ inputs.source_branch }} into ${{ inputs.dest_branch }}
-        run: git merge origin/${{ inputs.source_branch }}
+        run: git merge ${{ inputs.source_branch }}
       - name: push ${{ inputs.dest_branch }}
         run: git push origin ${{ inputs.dest_branch }}
