@@ -50,8 +50,8 @@ jobs:
         run: git add . && git commit -m "🚀 bump version + 📦️ build files"
       - name: push ${{ inputs.source_branch }}
         run: git push origin ${{ inputs.source_branch }}
-
-  build:
+  merge:
+    needs: build
     name: Merge ${{ inputs.source_branch }} into ${{ inputs.dest_branch }}
     runs-on: ubuntu-latest
     steps:
