@@ -49,11 +49,13 @@ jobs:
         run: git add . && git commit -m "🚀 bump version + 📦️ build files"
       - name: push ${{ inputs.source_branch }}
         run: git push origin ${{ inputs.source_branch }}
-      - name: Checkout Repo
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ inputs.dest_branch }}
-          # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
+      # - name: Checkout Repo
+      # uses: actions/checkout@v3
+      # with:
+      # ref: ${{ inputs.dest_branch }}
+      # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
+      - name: Checkout ${{ inputs.dest_branch }}
+        run: git checkout ${{ inputs.dest_branch }}
       - name: Merge ${{ inputs.source_branch }} into ${{ inputs.dest_branch }}
         run: git status && git log && git merge origin/${{ inputs.source_branch }}
       - name: push ${{ inputs.dest_branch }}
