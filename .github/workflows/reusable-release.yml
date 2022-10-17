@@ -25,7 +25,7 @@ jobs:
           ref: ${{ inputs.source_branch }}
           # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
       - name: Setup git user
-        run: git config --global user.email "<>" && git config --global user.name "$AUTHOR_BOT_NAME"
+        run: git pull && git config --global user.email "<>" && git config --global user.name "$AUTHOR_BOT_NAME"
       - name: Setup pnPM 7
         uses: pnpm/action-setup@v2
         with:
@@ -55,7 +55,7 @@ jobs:
       # ref: ${{ inputs.dest_branch }}
       # token: ${{ secrets.MDSBD_MAVEN_PASSWORD }}
       - name: Checkout ${{ inputs.dest_branch }}
-        run: git pull && git checkout ${{ inputs.dest_branch }}
+        run: git checkout ${{ inputs.dest_branch }}
       - name: Merge ${{ inputs.source_branch }} into ${{ inputs.dest_branch }}
         run: git status && git log -n 5 && git merge origin/${{ inputs.source_branch }}
       - name: push ${{ inputs.dest_branch }}
