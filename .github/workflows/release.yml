@@ -2,15 +2,16 @@ name: 1. Release new version
 
 on:
   workflow_dispatch:
-    release_type:
-      description: "Release type"
-      required: true
-      default: "patch"
-      type: choice
-      options:
-        - major
-        - minor
-        - patch
+    inputs:
+      release_type:
+        description: "Release type"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
 
 jobs:
   call-workflow:
