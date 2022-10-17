@@ -11,6 +11,10 @@ on:
         required: true
         type: string
         default: "test"
+      release_type:
+        required: true
+        type: string
+        default: "patch"
 env:
   AUTHOR_BOT_NAME: Bot GitHub Actions
 
@@ -43,7 +47,7 @@ jobs:
         # env:
         #   NODE_AUTH_TOKEN: ${{ secrets.MDSBD_MAVEN_PASSWORD }} # required for @mds-bd
       - name: Bump version without commit
-        run: pnpm version minor --no-git-tag-version
+        run: pnpm version ${{ inputs.release_type }} --no-git-tag-version
       - name: Build
         run: pnpm build
       - name: Commit Bump version and Build
