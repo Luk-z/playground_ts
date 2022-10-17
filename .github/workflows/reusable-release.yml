@@ -64,6 +64,6 @@ jobs:
       - name: Setup git user
         run: git config --global user.email "<>" && git config --global user.name "$AUTHOR_BOT_NAME"
       - name: Merge ${{ inputs.source_branch }} into ${{ inputs.dest_branch }}
-        run: git pull && git merge ${{ inputs.source_branch }}
+        run: git checkout ${{ inputs.source_branch }} && git checkout ${{ inputs.dest_branch }} && git merge ${{ inputs.source_branch }}
       - name: push ${{ inputs.dest_branch }}
         run: git push origin ${{ inputs.dest_branch }}
