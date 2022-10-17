@@ -1,11 +1,11 @@
-name: 3. Release an hotfix
+name: 1. Release new version
 
 on:
   workflow_dispatch:
 
 jobs:
   call-workflow:
-    uses: ./.github/workflows/release-new-version.yml
+    uses: ./.github/workflows/reusable-release.yml
     with:
       source_branch: develop
       dest_branch: main
