@@ -17,7 +17,7 @@ function App() {
           <News />
         </Section>
         <Banner
-          title={`we are. 5`}
+          title={`we are. 6`}
           description={`Consectetur adipiscing elit.
         Nulla condimentum tortor sem.`}
           buttonText="THE PLAYERS >"
