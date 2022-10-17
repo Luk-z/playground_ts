@@ -57,6 +57,6 @@ jobs:
       - name: Checkout ${{ inputs.dest_branch }}
         run: git pull && git checkout ${{ inputs.dest_branch }}
       - name: Merge ${{ inputs.source_branch }} into ${{ inputs.dest_branch }}
-        run: git status && git log && git merge origin/${{ inputs.source_branch }}
+        run: git status && git log -n 5 && git merge origin/${{ inputs.source_branch }}
       - name: push ${{ inputs.dest_branch }}
         run: git push origin ${{ inputs.dest_branch }}
