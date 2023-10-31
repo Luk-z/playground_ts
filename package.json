@@ -1,6 +1,6 @@
 {
   "name": "playground_ts",
-  "version": "0.31.2",
+  "version": "0.31.3",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.31",
@@ -41,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.39.0"
   }
 }
